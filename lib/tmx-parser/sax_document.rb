@@ -16,6 +16,11 @@ module TmxParser
     end
 
     def start_element(name, attrs = [])
+      unless @body
+        @body = true if name == BODY_TAG
+        return
+      end
+
       case name
         when UNIT_TAG
           listener.unit(
@@ -42,6 +47,7 @@ module TmxParser
     end
 
     def end_element(name)
+      return if name == BODY_TAG || !@body
       @capture_stack.pop
       send_text
       listener.done(name)
@@ -69,5 +75,4 @@ module TmxParser
       end
     end
   end
-
 end

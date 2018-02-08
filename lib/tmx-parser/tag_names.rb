@@ -2,6 +2,7 @@
 
 module TmxParser
   module TagNames
+    BODY_TAG         = 'body'
     UNIT_TAG         = 'tu'
     VARIANT_TAG      = 'tuv'
     PROPERTY_TAG     = 'prop'
